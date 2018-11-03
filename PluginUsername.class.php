@@ -7,18 +7,22 @@ if (!class_exists('Plugin')) {
     die('Hacking attemp!');
 }
 
-class PluginUsername extends Plugin {
+class PluginUsername extends Plugin
+{
 
-    public function Activate() {
+    public function Activate()
+    {
         return true;
     }
 
-    public function Deactivate(){
+    public function Deactivate()
+    {
         return true;
     }
 
-    public function Init() {
-        $this->Viewer_AppendScript(Plugin::GetTemplatePath(__CLASS__)."/js/jquery.ba-replacetext.min.js");
+    public function Init()
+    {
+        $this->Viewer_AppendScript(Plugin::GetTemplatePath(__CLASS__) . "/js/jquery.ba-replacetext.min.js");
     }
 }
-?>
+
