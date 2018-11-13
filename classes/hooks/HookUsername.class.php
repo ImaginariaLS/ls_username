@@ -2,10 +2,23 @@
 
 class PluginUsername_HookUsername extends Hook
 {
+    const ConfigKey = 'username';
+    const HooksArray = [
+        'template_html_head_end'  =>  'UserName',
+    ];
+
 
     public function RegisterHook()
     {
-        $this->AddHook('template_html_head_end', 'UserName');
+        $plugin_config_key = $this::ConfigKey;
+        foreach ($this::HooksArray as $hook => $callback) {
+            $this->AddHook(
+                $hook,
+                $callback,
+                __CLASS__,
+                Config::Get("plugin.{$plugin_config_key}.hook_priority.{$hook}") ?? 1
+            );
+        }
     }
 
     public function UserName()
